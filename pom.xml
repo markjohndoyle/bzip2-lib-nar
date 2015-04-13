@@ -1,0 +1,52 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.bzip</groupId>
+    <artifactId>bzip2</artifactId>
+    <packaging>nar</packaging>
+    <name>BZip2</name>
+    <version>1.0.6</version>
+    <description>BZip2 library</description>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.github.maven-nar</groupId>
+                <artifactId>nar-maven-plugin</artifactId>
+                <version>3.2.2</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <cpp>
+                        <name>g++</name>
+                        <debug>false</debug>
+                        <includes>
+                            <include>**/*.h</include>
+                            <include>**/*.c</include>
+                        </includes>
+                        <options>
+                            <option>-Wall</option>
+                            <option>-Winline</option>
+                            <option>-O2</option>
+                            <option>-g</option>
+                            <option>-D_FILE_OFFSET_BITS=64</option>
+                        </options>
+                        <!--<compileOrder>blocksort.c, huffman.c, crctable.c, randtable.c, compress.c, decompress.c, bzlib.c, bzip2.c</compileOrder>-->
+            
+                      </cpp>
+
+                      <linker>
+                        <name>g++</name>
+                    </linker>
+                    
+                    <libraries>
+                        <library>
+                            <type>static</type>
+                        </library>
+                    </libraries>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
